@@ -36,4 +36,14 @@ public class CalculateAmount {
         }
         return false;
     }
+
+    // 할인 후 예상 결제 금액을 계산하는 메서드
+    public double getExpectedTotalPaymentAmount(Order order) {
+        double resultAmount = 0;
+        resultAmount = getTotalAmountBeforeDiscount(order) - getTotalDiscountAmount(order);
+        // 증정 이벤트가 적용 이벤트들에 포함된 경우
+        if (hasGiveawayEvent(order.getValidEvents()))
+            resultAmount -= giveawayEvent.calculateDiscountAmount(order);   // 증정 이벤트 혜택은 실제 할인 금액이 아니므로 할인 금액에서 제외함
+        return resultAmount;
+    }
 }
