@@ -7,7 +7,7 @@ public class ChristmasDdayEvent extends Discount implements Event {
 
     @Override
     public boolean isValidEventPeriod(int reservationDate) {
-        return Day.EVENT_START_DAY.getDay() <= reservationDate && Day.EVENT_END_DAY.getDay() >= reservationDate;
+        return Day.CHRISTMAS_D_DAY_EVENT_START_DAY.getDay() <= reservationDate && Day.CHRISTMAS_D_DAY_EVENT_END_DAY.getDay() >= reservationDate;
     }
 
     @Override
