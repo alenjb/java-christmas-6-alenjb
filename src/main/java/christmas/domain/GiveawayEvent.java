@@ -2,6 +2,7 @@ package christmas.domain;
 
 import christmas.constants.Amount;
 import christmas.constants.Day;
+import christmas.constants.Giveaway;
 
 import java.util.List;
 
@@ -22,4 +23,8 @@ public class GiveawayEvent implements Event {
         return totalAmount >= Amount.MINIMUM_AMOUNT_FOR_GIVEAWAY_EVENT.amount;
     }
 
+    @Override
+    public void addToValidEvents(List<Event> validEvents) {
+        validEvents.add(this);
+    }
 }
