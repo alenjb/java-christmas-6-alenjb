@@ -15,4 +15,8 @@ public class ChristmasDdayEvent extends Discount implements Event {
         return totalAmount >= Amount.MINIMUM_AMOUNT_FOR_EVENT.amount;
     }
 
+    public double calculateDiscountAmount(int reservationDate) {
+        return Amount.INITIAL_CHRISTMAS_DDAY_DISCOUNT_AMOUNT.amount + Amount.CHRISTMAS_DDAY_DISCOUNT_INCREMENT_AMOUNT_BY_DAY.amount * (reservationDate - Day.CHRISTMAS_D_DAY_EVENT_START_DAY.getDay());
+    }
+
 }
