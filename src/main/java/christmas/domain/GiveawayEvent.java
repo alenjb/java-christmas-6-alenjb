@@ -31,4 +31,13 @@ public class GiveawayEvent implements Event {
     public void giveaway(Order order) {
         order.setGiveaway(Giveaway.CHAMPAGNE);
     }
+
+    @Override
+    public void doEvent(Order order) {
+        if (!isValidEvent(order.getReservationDate(), order.getExpectedPaymentAmount())) {
+            return;
+        }
+        addToValidEvents(order.getValidEvents());
+        giveaway(order);
+    }
 }
