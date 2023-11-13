@@ -29,4 +29,10 @@ public class WeekendEvent extends Discount implements Event {
     public double calculateDiscountAmount(Order order) {
         return getNumberOfMains(order) * Amount.WEEKEND_DISCOUNT_AMOUNT.amount;
     }
+
+    @Override
+    void discount(Order order) {
+        order.setExpectedPaymentAmount(order.getExpectedPaymentAmount() - calculateDiscountAmount(order));
+    }
+
 }
