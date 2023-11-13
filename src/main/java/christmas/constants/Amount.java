@@ -11,7 +11,7 @@ public enum Amount {
     MINIMUM_TREE_AMOUNT(10000),  // 트리뱃지 금액
     MINIMUM_SANTA_AMOUNT(20000); // 산타 뱃지 금액
 
-    final double amount;
+    public final double amount;
 
     Amount(double amount) {
         this.amount = amount;
