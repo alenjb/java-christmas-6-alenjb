@@ -20,4 +20,9 @@ public class SpecialEvent extends Discount implements Event {
     public double calculateDiscountAmount(Order order) {
         return Amount.SPECIAL_DISCOUNT_AMOUNT.amount;
     }
+
+    @Override
+    void discount(Order order) {
+        order.setExpectedPaymentAmount(order.getExpectedPaymentAmount() - calculateDiscountAmount(order));
+    }
 }
