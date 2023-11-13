@@ -27,4 +27,8 @@ public class GiveawayEvent implements Event {
     public void addToValidEvents(List<Event> validEvents) {
         validEvents.add(this);
     }
+
+    public void giveaway(Order order) {
+        order.setGiveaway(Giveaway.CHAMPAGNE);
+    }
 }
