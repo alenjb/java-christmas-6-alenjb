@@ -2,6 +2,7 @@ package christmas.domain;
 
 import christmas.constants.Badge;
 import christmas.constants.Giveaway;
+import christmas.constants.Menu;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ public class Order {
     // 적용 가능한 이벤트들
     private List<Event> validEvents;
     // 주문 메뉴들
-    private Map<String, Integer> orderedMenus;
+    private Map<Menu, Integer> orderedMenus;
     // 예상 결제 금액
     private double expectedPaymentAmount;
     // 배지
@@ -37,11 +38,11 @@ public class Order {
         this.validEvents = validEvents;
     }
 
-    public Map<String, Integer> getOrderedMenus() {
+    public Map<Menu, Integer> getOrderedMenus() {
         return orderedMenus;
     }
 
-    public void setOrderedMenus(Map<String, Integer> orderedMenus) {
+    public void setOrderedMenus(Map<Menu, Integer> orderedMenus) {
         this.orderedMenus = orderedMenus;
     }
 
