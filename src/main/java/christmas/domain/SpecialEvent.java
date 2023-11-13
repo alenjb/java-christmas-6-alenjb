@@ -16,4 +16,8 @@ public class SpecialEvent extends Discount implements Event {
     public boolean isValidEventAmount(double totalAmount) {
         return totalAmount >= Amount.MINIMUM_AMOUNT_FOR_EVENT.amount;
     }
+
+    public double calculateDiscountAmount(Order order) {
+        return Amount.SPECIAL_DISCOUNT_AMOUNT.amount;
+    }
 }
