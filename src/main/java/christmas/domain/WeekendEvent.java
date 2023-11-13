@@ -9,7 +9,7 @@ public class WeekendEvent extends Discount implements Event {
 
     @Override
     public boolean isValidEventPeriod(int day) {
-        return Day.WEEKDAYS.contains(day);
+        return Day.WEEKEND.contains(day);
     }
 
     @Override
@@ -24,5 +24,9 @@ public class WeekendEvent extends Discount implements Event {
                 numberOfMains++;
         }
         return numberOfMains;
+    }
+
+    public double calculateDiscountAmount(Order order) {
+        return getNumberOfMains(order) * Amount.WEEKEND_DISCOUNT_AMOUNT.amount;
     }
 }
