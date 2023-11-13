@@ -20,8 +20,8 @@ public abstract class Discount implements Event {
 
     @Override
     public void doEvent(Order order) {
-        if (isValidEvent(order.reservationDate, order.expectedPaymentAmount)) {
-            addToValidEvents(order.validEvents);
+        if (isValidEvent(order.getReservationDate(), order.getExpectedPaymentAmount())) {
+            addToValidEvents(order.getValidEvents());
             discount(order);
         }
     }
