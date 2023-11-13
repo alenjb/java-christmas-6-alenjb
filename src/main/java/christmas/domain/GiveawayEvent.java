@@ -28,6 +28,12 @@ public class GiveawayEvent implements Event {
         validEvents.add(this);
     }
 
+
+    @Override
+    public double calculateDiscountAmount(Order order) {
+        return 0;   // 할인 이벤트가 아니므로 0을 반환
+    }
+
     public void giveaway(Order order) {
         order.setGiveaway(Giveaway.CHAMPAGNE);
     }
