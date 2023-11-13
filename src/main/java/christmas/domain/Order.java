@@ -16,11 +16,10 @@ public class Order {
     private Map<Menu, Integer> orderedMenus;
     // 예상 결제 금액
     private double expectedPaymentAmount;
-    // 배지
-    private Badge badge;
-    //증정품
-    private Giveaway giveaway;
-
+    // 배지를 NONE으로 초기화
+    private Badge badge = Badge.NONE;
+    //증정품을 NONE으로 초기화
+    private Giveaway giveaway = Giveaway.NONE;
 
     public int getReservationDate() {
         return reservationDate;
