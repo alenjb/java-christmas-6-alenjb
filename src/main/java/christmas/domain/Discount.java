@@ -6,8 +6,8 @@ public abstract class Discount implements Event {
     double discountAmount;
 
     @Override
-    public boolean isValidEvent() {
-        return isValidEventPeriod() && isValidEventAmount();
+    public boolean isValidEvent(int day, double totalAmount) {
+        return isValidEventPeriod(day) && isValidEventAmount(totalAmount);
     }
 
     @Override
@@ -16,13 +16,13 @@ public abstract class Discount implements Event {
     }
 
     // 할인을 실시하는 메서드
-    abstract void discount();
+    abstract void discount(Order order);
 
     @Override
-    public void doEvent(List<Event> validEvents) {
-        if (isValidEvent()) {
-            addToValidEvents(validEvents);
-            discount();
+    public void doEvent(Order order) {
+        if (isValidEvent(order.reservationDate, order.expectedPaymentAmount)) {
+            addToValidEvents(order.validEvents);
+            discount(order);
         }
     }
 }
