@@ -8,6 +8,7 @@ import java.util.*;
 
 public class Order {
     final int NONE = 0;
+    final CalculateAmount calculator = new CalculateAmount();
     // 방문 날짜
     private int reservationDate;
     // 적용 가능한 이벤트들
@@ -43,6 +44,7 @@ public class Order {
                 )
         );
     }
+
     public Order(int date, Map<Menu, Integer> orderedMenus) {
         setOrderedMenus(
                 Map.ofEntries(
@@ -66,6 +68,7 @@ public class Order {
         );
         this.reservationDate = date;
         this.addOrderedMenus(orderedMenus);
+        this.expectedPaymentAmount = calculator.getTotalAmountBeforeDiscount(this);
     }
 
     public int getReservationDate() {
@@ -83,6 +86,7 @@ public class Order {
     public void setValidEvents(List<Event> validEvents) {
         this.validEvents = validEvents;
     }
+
     public void addValidEvents(List<Event> validEvents) {
         this.validEvents.addAll(validEvents);
     }
@@ -94,6 +98,7 @@ public class Order {
     public void setOrderedMenus(Map<Menu, Integer> orderedMenus) {
         this.orderedMenus = orderedMenus;
     }
+
     public void addOrderedMenus(Map<Menu, Integer> orderedMenus) {
         // 맵을 복사하여 새로운 맵 생성
         Map<Menu, Integer> existingMenus = new HashMap<>(getOrderedMenus());
