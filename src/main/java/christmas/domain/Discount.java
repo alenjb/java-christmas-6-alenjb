@@ -11,8 +11,10 @@ public abstract class Discount implements Event {
     }
 
     @Override
-    public void addToValidEvents(List<Event> validEvents) {
+    public void addToValidEvents(Order order) {
+        List<Event> validEvents = order.getValidEvents();
         validEvents.add(this);
+        order.setValidEvents(validEvents);
     }
 
     // 할인을 실시하는 메서드
@@ -23,7 +25,7 @@ public abstract class Discount implements Event {
         if (!isValidEvent(order.getReservationDate(), order.getExpectedPaymentAmount())) {
             return;
         }
-        addToValidEvents(order.getValidEvents());
+        addToValidEvents(order);
         discount(order);
     }
 }

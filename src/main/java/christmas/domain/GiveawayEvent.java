@@ -24,8 +24,10 @@ public class GiveawayEvent implements Event {
     }
 
     @Override
-    public void addToValidEvents(List<Event> validEvents) {
+    public void addToValidEvents(Order order) {
+        List<Event> validEvents = order.getValidEvents();
         validEvents.add(this);
+        order.setValidEvents(validEvents);
     }
 
 
@@ -43,7 +45,7 @@ public class GiveawayEvent implements Event {
         if (!isValidEvent(order.getReservationDate(), order.getExpectedPaymentAmount())) {
             return;
         }
-        addToValidEvents(order.getValidEvents());
+        addToValidEvents(order);
         giveaway(order);
     }
 }
