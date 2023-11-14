@@ -95,6 +95,5 @@ class WeekdaysEventTest {
         WEEKDAYS_EVENT.discount(ORDER);
         // 금액 비교
         assertEquals(ORDER.getExpectedPaymentAmount(), expectedResult);
-
     }
 }
