@@ -10,8 +10,8 @@ public enum Amount {
     SPECIAL_DISCOUNT_AMOUNT(1000),  // 특별 할인 금액 - 1,000원
     MINIMUM_STAR_AMOUNT(5000),  // 스타뱃지 금액 - 5,000원
     MINIMUM_TREE_AMOUNT(10000),  // 트리뱃지 금액 - 10,000원
-    MINIMUM_SANTA_AMOUNT(20000); // 산타 뱃지 금액 - 20,000원
-    
+    MINIMUM_SANTA_AMOUNT(20000), // 산타 뱃지 금액 - 20,000원
+    GIVEAWAY_AMOUNT(25000); // 증정 이벤트 금액 -25,000원
 
     public final int amount;
 
