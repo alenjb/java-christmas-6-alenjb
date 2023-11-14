@@ -21,7 +21,7 @@ public class WeekendEvent extends Discount implements Event {
         int numberOfMains = 0;
         for (Menu menu : order.getOrderedMenus().keySet()) {
             if (menu.getCategory().equals(MenuCategory.MAIN))
-                numberOfMains++;
+                numberOfMains += order.getOrderedMenus().get(menu);
         }
         return numberOfMains;
     }

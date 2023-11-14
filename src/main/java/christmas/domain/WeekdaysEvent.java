@@ -21,7 +21,7 @@ public class WeekdaysEvent extends Discount implements Event {
         int numberOfDesserts = 0;
         for (Menu menu : order.getOrderedMenus().keySet()) {
             if (menu.getCategory().equals(MenuCategory.DESSERT))
-                numberOfDesserts++;
+                numberOfDesserts += order.getOrderedMenus().get(menu);
         }
         return numberOfDesserts;
     }
