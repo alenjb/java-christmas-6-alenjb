@@ -4,6 +4,7 @@ import christmas.constants.Badge;
 import christmas.constants.Giveaway;
 import christmas.constants.Menu;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,11 +12,11 @@ public class Order {
     // 방문 날짜
     private int reservationDate;
     // 적용 가능한 이벤트들
-    private List<Event> validEvents;
+    private List<Event> validEvents = new ArrayList<>();
     // 주문 메뉴들
     private Map<Menu, Integer> orderedMenus;
     // 예상 결제 금액
-    private double expectedPaymentAmount;
+    private int expectedPaymentAmount;
     // 배지를 NONE으로 초기화
     private Badge badge = Badge.NONE;
     //증정품을 NONE으로 초기화
@@ -45,11 +46,11 @@ public class Order {
         this.orderedMenus = orderedMenus;
     }
 
-    public double getExpectedPaymentAmount() {
+    public int getExpectedPaymentAmount() {
         return expectedPaymentAmount;
     }
 
-    public void setExpectedPaymentAmount(double expectedPaymentAmount) {
+    public void setExpectedPaymentAmount(int expectedPaymentAmount) {
         this.expectedPaymentAmount = expectedPaymentAmount;
     }
 

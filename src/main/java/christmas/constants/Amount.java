@@ -13,9 +13,9 @@ public enum Amount {
     MINIMUM_SANTA_AMOUNT(20000); // 산타 뱃지 금액 - 20,000원
     
 
-    public final double amount;
+    public final int amount;
 
-    Amount(double amount) {
+    Amount(int amount) {
         this.amount = amount;
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GiveawayEvent implements Event {
     @Override
-    public boolean isValidEvent(int reservationDate, double totalAmount) {
+    public boolean isValidEvent(int reservationDate, int totalAmount) {
         return isValidEventPeriod(reservationDate) && isValidEventAmount(totalAmount);
     }
 
@@ -19,7 +19,7 @@ public class GiveawayEvent implements Event {
     }
 
     @Override
-    public boolean isValidEventAmount(double totalAmount) {
+    public boolean isValidEventAmount(int totalAmount) {
         return totalAmount >= Amount.MINIMUM_AMOUNT_FOR_GIVEAWAY_EVENT.amount;
     }
 
@@ -32,7 +32,7 @@ public class GiveawayEvent implements Event {
 
 
     @Override
-    public double calculateDiscountAmount(Order order) {
+    public int calculateDiscountAmount(Order order) {
         return 0;   // 할인 이벤트가 아니므로 0을 반환
     }
 

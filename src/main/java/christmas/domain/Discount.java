@@ -3,10 +3,10 @@ package christmas.domain;
 import java.util.List;
 
 public abstract class Discount implements Event {
-    double discountAmount;
+    int discountAmount;
 
     @Override
-    public boolean isValidEvent(int day, double totalAmount) {
+    public boolean isValidEvent(int day, int totalAmount) {
         return isValidEventPeriod(day) && isValidEventAmount(totalAmount);
     }
 

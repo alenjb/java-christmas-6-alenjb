@@ -10,8 +10,8 @@ public class CalculateAmount {
     GiveawayEvent giveawayEvent = new GiveawayEvent();
 
     // 할인 전 총주문 금액을 계산하는 메서드
-    public double getTotalAmountBeforeDiscount(Order order) {
-        double resultAmount = 0;
+    public int getTotalAmountBeforeDiscount(Order order) {
+        int resultAmount = 0;
         for (int amount : order.getOrderedMenus().values()) {
             resultAmount += amount;
         }
@@ -19,8 +19,8 @@ public class CalculateAmount {
     }
 
     // 총혜택 금액을 계산하는 메서드
-    public double getTotalDiscountAmount(Order order) {
-        double resultAmount = 0;
+    public int getTotalDiscountAmount(Order order) {
+        int resultAmount = 0;
         for (Event event : order.getValidEvents()) {
             resultAmount += event.calculateDiscountAmount(order);
         }
@@ -38,8 +38,8 @@ public class CalculateAmount {
     }
 
     // 할인 후 예상 결제 금액을 계산하는 메서드
-    public double getExpectedTotalPaymentAmount(Order order) {
-        double resultAmount = 0;
+    public int getExpectedTotalPaymentAmount(Order order) {
+        int resultAmount = 0;
         resultAmount = getTotalAmountBeforeDiscount(order) - getTotalDiscountAmount(order);
         // 증정 이벤트가 적용 이벤트들에 포함된 경우
         if (hasGiveawayEvent(order.getValidEvents()))

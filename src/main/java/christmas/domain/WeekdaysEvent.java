@@ -13,7 +13,7 @@ public class WeekdaysEvent extends Discount implements Event {
     }
 
     @Override
-    public boolean isValidEventAmount(double totalAmount) {
+    public boolean isValidEventAmount(int totalAmount) {
         return totalAmount >= Amount.MINIMUM_AMOUNT_FOR_EVENT.amount;
     }
 
@@ -26,7 +26,7 @@ public class WeekdaysEvent extends Discount implements Event {
         return numberOfDesserts;
     }
 
-    public double calculateDiscountAmount(Order order) {
+    public int calculateDiscountAmount(Order order) {
         return getNumberOfDesserts(order) * Amount.WEEKDAYS_DISCOUNT_AMOUNT.amount;
     }
 
