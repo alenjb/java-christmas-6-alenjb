@@ -31,6 +31,15 @@ public enum Menu {
         this.category = MenuCategory;
     }
 
+    public static Menu getMenuByName(String name) {
+        for (Menu menu : Menu.values()) {
+            if (menu.name.equals(name)) {
+                return menu;
+            }
+        }
+        return null;
+    }
+
     public String getName() {
         return name;
     }
