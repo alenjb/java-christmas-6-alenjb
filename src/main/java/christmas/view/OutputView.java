@@ -63,4 +63,10 @@ public class OutputView {
         System.out.println(Message.EXPECTED_TOTAL_PAYMENT_AMOUNT_MSG);
         System.out.println(String.format("%,d", CALCULATOR.getExpectedTotalPaymentAmount(order)) + "원");
     }
+
+    // 12월 이벤트 배지를 출력하는 메서드
+    public void printBadge(Order order) {
+        System.out.println(Message.BADGE_MSG);
+        System.out.println(order.getBadge());
+    }
 }
