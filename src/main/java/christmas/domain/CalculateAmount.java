@@ -40,16 +40,6 @@ public class CalculateAmount {
         return resultAmount;
     }
 
-    // 적용 이벤트들에 증정 이벤트가 있는지 확인하는 메서드
-    public boolean hasGiveawayEvent(List<Event> validEvents) {
-        for (Event event : validEvents) {
-            if (event instanceof GiveawayEvent) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     // 할인 후 예상 결제 금액을 계산하는 메서드
     public int getExpectedTotalPaymentAmount(Order order) {
         return getTotalAmountBeforeDiscount(order) - getTotalDiscountAmount(order);
