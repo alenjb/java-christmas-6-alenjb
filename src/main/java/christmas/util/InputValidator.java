@@ -1,5 +1,7 @@
 package christmas.util;
 
+import java.util.regex.Pattern;
+
 public class InputValidator {
     static Parser parser = new Parser();
 
@@ -23,4 +25,12 @@ public class InputValidator {
         }
         return false;
     }
+
+    // 메뉴 형식이 올바른지 확인하는 메서드: 형식이 다를 시 false 반환
+    public boolean checkValidFormat(String input) {
+        // 올바른 형식을 지정
+        Pattern pattern = Pattern.compile("^(([가-힣]+-(?:[1-9]|1[0-9]|20)),)*[가-힣]+-(?:[1-9]|1[0-9]|20)$");
+        return pattern.matcher(input).matches();
+    }
+
 }
