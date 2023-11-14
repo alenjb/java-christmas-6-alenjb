@@ -9,12 +9,12 @@ public class OutputView {
     final CalculateAmount CALCULATOR = new CalculateAmount();
 
     public void greet() {
-        System.out.println(Message.GREETING_MSG);
+        System.out.println(Message.GREETING_MSG.getMessage());
     }
 
     // 주문 메뉴를 출력하는 메서드
     public void printOrderedMenus(Order order) {
-        System.out.println(Message.MENU_MSG);
+        System.out.println(Message.MENU_MSG.getMessage());
         for (Menu menu : order.getOrderedMenus().keySet()) {
             System.out.println(menu.getName() + " " + order.getOrderedMenus().get(menu) + "개");
         }
@@ -22,13 +22,13 @@ public class OutputView {
 
     // 할인 전 총주문 금액을 출력하는 메서드
     public void printTotalAmountBeforeDiscount(Order order) {
-        System.out.println(Message.TOTAL_AMOUNT_BEFORE_DISCOUNT_MSG);
+        System.out.println(Message.TOTAL_AMOUNT_BEFORE_DISCOUNT_MSG.getMessage());
         System.out.println(String.format("%,d", CALCULATOR.getTotalAmountBeforeDiscount(order)) + "원");
     }
 
     // 증정 메뉴를 출력하는 메서드
     public void printGiveaway(Order order) {
-        System.out.println(Message.GIVEAWAY_MSG);
+        System.out.println(Message.GIVEAWAY_MSG.getMessage());
         if (order.getGiveaway().equals(Giveaway.CHAMPAGNE)) {
             System.out.println(Giveaway.CHAMPAGNE.name() + " 1개");
             return;
@@ -40,33 +40,33 @@ public class OutputView {
     public void printBenefits(Order order) {
         for (Event event : order.getValidEvents()) {
             if (event instanceof ChristmasDdayEvent)
-                System.out.println(Message.CHRISTMAS_DDAY_EVENT_MSG + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
+                System.out.println(Message.CHRISTMAS_DDAY_EVENT_MSG.getMessage() + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
             if (event instanceof WeekdaysEvent)
-                System.out.println(Message.WEEKDAYS_EVENT_MSG + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
+                System.out.println(Message.WEEKDAYS_EVENT_MSG.getMessage() + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
             if (event instanceof WeekendEvent)
-                System.out.println(Message.WEEKEND_EVENT_MSG + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
+                System.out.println(Message.WEEKEND_EVENT_MSG.getMessage() + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
             if (event instanceof SpecialEvent)
-                System.out.println(Message.SPECIAL_EVENT_MSG + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
+                System.out.println(Message.SPECIAL_EVENT_MSG.getMessage() + String.format(" -%,d", event.calculateDiscountAmount(order)) + "원");
             if (event instanceof GiveawayEvent)
-                System.out.println(Message.GIVEAWAY_MSG + String.format(" -%,d", ((GiveawayEvent) event).calculateGiveawayAmount(order)) + "원");
+                System.out.println(Message.GIVEAWAY_MSG.getMessage() + String.format(" -%,d", ((GiveawayEvent) event).calculateGiveawayAmount(order)) + "원");
         }
     }
 
     // 총혜택 금액을 출력하는 메서드
     public void printTotalBenefits(Order order) {
-        System.out.println(Message.TOTAL_BENEFITS_AMOUNT_MSG);
+        System.out.println(Message.TOTAL_BENEFITS_AMOUNT_MSG.getMessage());
         System.out.println(String.format("-%,d", CALCULATOR.getTotalBenefits(order)) + "원");
     }
 
     // 할인 후 예상 결제 금액을 출력하는 메서드
     public void printExpectedTotalPaymentAmount(Order order) {
-        System.out.println(Message.EXPECTED_TOTAL_PAYMENT_AMOUNT_MSG);
+        System.out.println(Message.EXPECTED_TOTAL_PAYMENT_AMOUNT_MSG.getMessage());
         System.out.println(String.format("%,d", CALCULATOR.getExpectedTotalPaymentAmount(order)) + "원");
     }
 
     // 12월 이벤트 배지를 출력하는 메서드
     public void printBadge(Order order) {
-        System.out.println(Message.BADGE_MSG);
+        System.out.println(Message.BADGE_MSG.getMessage());
         System.out.println(order.getBadge());
     }
 }

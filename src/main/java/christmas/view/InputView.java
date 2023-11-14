@@ -14,7 +14,7 @@ public class InputView {
     final int INVALID = -1;
 
     public int readDate() {
-        System.out.println(Message.GET_DATE_MSG);
+        System.out.println(Message.GET_DATE_MSG.getMessage());
         String input = Console.readLine();
         if (VALIDATOR.checkDateValidity(input))
             return Integer.parseInt(input);
@@ -22,7 +22,7 @@ public class InputView {
     }
 
     public Map<Menu, Integer> readMenus() {
-        System.out.println(Message.GET_MENU_MSG);
+        System.out.println(Message.GET_MENU_MSG.getMessage());
         String input = Console.readLine();
         // 입력값이 유효하면
         if (VALIDATOR.checkMenuValidity(input))
