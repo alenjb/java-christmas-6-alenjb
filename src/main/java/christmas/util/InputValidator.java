@@ -48,7 +48,7 @@ public class InputValidator {
         if (!hasFoodOtherThanBeverage(menu))
             return false;
         // 5. 메뉴를 한번에 20개를 초과해서 주문했는지 확인
-        return !checkExceededMaxOrderQuantity(menu);
+        return checkExceededMaxOrderQuantity(menu);
     }
 
     // 메뉴 형식이 올바른지 확인하는 메서드: 형식이 다를 시 false 반환
