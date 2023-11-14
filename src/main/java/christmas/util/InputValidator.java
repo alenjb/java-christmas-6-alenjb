@@ -31,6 +31,26 @@ public class InputValidator {
         return false;
     }
 
+    // 입력된 메뉴의 유효성을 판단하는 메서드
+    public boolean checkMenuValidity(String input) {
+        // 1. 메뉴 형식이 올바른지 확인
+        if (!checkValidFormat(input))
+            return false;
+        // 2. 중복 메뉴를 입력했는지 확인
+        if (!checkDuplicateMenu(input))
+            return false;
+        // 입력을 바탕으로 메뉴이름과 수량을 매핑
+        Map<String, Integer> menu = parser.splitInput(input);
+        // 3. 메뉴판에 있는 메뉴인지 확인
+        if (!checkValidMenus(menu))
+            return false;
+        // 4. 음료를 제외한 음식을 1개 이상 주문했는지 확인
+        if (!hasFoodOtherThanBeverage(menu))
+            return false;
+        // 5. 메뉴를 한번에 20개를 초과해서 주문했는지 확인
+        return !checkExceededMaxOrderQuantity(menu);
+    }
+
     // 메뉴 형식이 올바른지 확인하는 메서드: 형식이 다를 시 false 반환
     public boolean checkValidFormat(String input) {
         // 올바른 형식을 지정
