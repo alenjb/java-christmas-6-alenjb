@@ -58,4 +58,9 @@ public class OutputView {
         System.out.println(String.format("-%,d", CALCULATOR.getTotalBenefits(order)) + "원");
     }
 
+    // 할인 후 예상 결제 금액을 출력하는 메서드
+    public void printExpectedTotalPaymentAmount(Order order) {
+        System.out.println(Message.EXPECTED_TOTAL_PAYMENT_AMOUNT_MSG);
+        System.out.println(String.format("%,d", CALCULATOR.getExpectedTotalPaymentAmount(order)) + "원");
+    }
 }
