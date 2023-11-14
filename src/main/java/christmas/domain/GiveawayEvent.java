@@ -25,9 +25,7 @@ public class GiveawayEvent implements Event {
 
     @Override
     public void addToValidEvents(Order order) {
-        List<Event> validEvents = order.getValidEvents();
-        validEvents.add(this);
-        order.setValidEvents(validEvents);
+        order.addValidEvents(List.of(this));
     }
 
 

@@ -62,6 +62,9 @@ public class Order {
     public void setValidEvents(List<Event> validEvents) {
         this.validEvents = validEvents;
     }
+    public void addValidEvents(List<Event> validEvents) {
+        this.validEvents.addAll(validEvents);
+    }
 
     public Map<Menu, Integer> getOrderedMenus() {
         return orderedMenus;

@@ -38,7 +38,7 @@ class DiscountTest {
     @DisplayName("이벤트 적용 목록에 해당 할인 이벤트를 정확히 추가하는지 테스트")
     void addToValidEvents() {
         event.addToValidEvents(order);
-        assertEquals(order.getValidEvents(), List.of(event));
+        assertEquals(List.of(event), order.getValidEvents());
     }
 
 
@@ -47,6 +47,6 @@ class DiscountTest {
     void doEvent() {
         int originalExpectedPaymentAmount = order.getExpectedPaymentAmount();
         event.doEvent(order);
-        assertEquals(order.getExpectedPaymentAmount(), originalExpectedPaymentAmount - event.discountAmount);
+        assertEquals(originalExpectedPaymentAmount - event.discountAmount, order.getExpectedPaymentAmount());
     }
 }
