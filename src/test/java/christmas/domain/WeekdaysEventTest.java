@@ -50,16 +50,13 @@ class WeekdaysEventTest {
         Map<Menu, Integer> menus = new HashMap<>();
 
         // 1. 디저트 메뉴가 없는 경우
-        menus.put(Menu.BBQ_RIBS, 2);
-        menus.put(Menu.CAESAR_SALAD, 4);
-        ORDER.setOrderedMenus(menus);
+        menus = Map.of(Menu.BBQ_RIBS, 2, Menu.CAESAR_SALAD, 4);
+        ORDER.addOrderedMenus(menus);
         assertEquals(0, WEEKDAYS_EVENT.getNumberOfDesserts(ORDER));
 
         // 2. 디저트 메뉴가 있는 경우
-        menus.put(Menu.BBQ_RIBS, 2);
-        menus.put(Menu.CAESAR_SALAD, 4);
-        menus.put(Menu.CHOCOLATE_CAKE, 3);
-        ORDER.setOrderedMenus(menus);
+        menus = Map.of(Menu.BBQ_RIBS, 2, Menu.CAESAR_SALAD, 4, Menu.CHOCOLATE_CAKE, 3);
+        ORDER.addOrderedMenus(menus);
         assertEquals(3, WEEKDAYS_EVENT.getNumberOfDesserts(ORDER));
     }
 
@@ -70,14 +67,10 @@ class WeekdaysEventTest {
         int reservationDate = DayForTest.WEEKDAYS_EVENT_INVALID_DAY.getDay();
         ORDER.setReservationDate(reservationDate);
         // 메뉴 설정
-        Map<Menu, Integer> menus = new HashMap<>();
-        menus.put(Menu.BBQ_RIBS, 2);
-        menus.put(Menu.CAESAR_SALAD, 4);
-        menus.put(Menu.CHOCOLATE_CAKE, 3);
-        menus.put(Menu.ICE_CREAM, 10);
-        ORDER.setOrderedMenus(menus);
+        Map<Menu, Integer> menus = Map.of(Menu.BBQ_RIBS, 2, Menu.CAESAR_SALAD, 4, Menu.CHOCOLATE_CAKE, 3, Menu.ICE_CREAM, 10);
+        ORDER.addOrderedMenus(menus);
         // 올바른 혜택 금액 계산
-        int expectedResult =  (menus.get(Menu.CHOCOLATE_CAKE) + menus.get(Menu.ICE_CREAM))
+        int expectedResult = (menus.get(Menu.CHOCOLATE_CAKE) + menus.get(Menu.ICE_CREAM))
                 * Amount.WEEKDAYS_DISCOUNT_AMOUNT.amount;
         // calculateDiscountAmount를 이용한 혜택 금액 계산
         WEEKDAYS_EVENT.calculateDiscountAmount(ORDER);
@@ -92,16 +85,12 @@ class WeekdaysEventTest {
         int reservationDate = DayForTest.WEEKDAYS_EVENT_INVALID_DAY.getDay();
         ORDER.setReservationDate(reservationDate);
         // 메뉴 설정
-        Map<Menu, Integer> menus = new HashMap<>();
-        menus.put(Menu.BBQ_RIBS, 2);
-        menus.put(Menu.CAESAR_SALAD, 4);
-        menus.put(Menu.CHOCOLATE_CAKE, 12);
-        menus.put(Menu.ICE_CREAM, 3);
-        ORDER.setOrderedMenus(menus);
+        Map<Menu, Integer> menus = Map.of(Menu.BBQ_RIBS, 2, Menu.CAESAR_SALAD, 4, Menu.CHOCOLATE_CAKE, 12, Menu.ICE_CREAM, 3);
+        ORDER.addOrderedMenus(menus);
         // 올바른 혜택 금액 계산
         int expectedResult = ORDER.getExpectedPaymentAmount() -
                 (menus.get(Menu.CHOCOLATE_CAKE) + menus.get(Menu.ICE_CREAM)) *
-                Amount.WEEKDAYS_DISCOUNT_AMOUNT.amount;
+                        Amount.WEEKDAYS_DISCOUNT_AMOUNT.amount;
         // calculateDiscountAmount를 이용한 혜택 금액 계산
         WEEKDAYS_EVENT.discount(ORDER);
         // 금액 비교
