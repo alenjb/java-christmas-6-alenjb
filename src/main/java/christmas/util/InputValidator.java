@@ -66,4 +66,13 @@ public class InputValidator {
         }
         return false;
     }
+
+    // 음료를 제외한 음식을 1개 이상 주문했는지 확인: 음료밖에 없을 시 false 반환
+    public boolean hasFoodOtherThanBeverage(Map<String, Integer> menus) {
+        for (String menuName : menus.keySet()) {
+            if (!menuName.equals(Menu.ZERO_COLA.getName()) && !menuName.equals(Menu.RED_WINE.getName()) && !menuName.equals(Menu.CHAMPAGNE.getName()))
+                return true;
+        }
+        return false;
+    }
 }
