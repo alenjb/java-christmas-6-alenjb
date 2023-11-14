@@ -51,4 +51,11 @@ public class OutputView {
                 System.out.println(Message.GIVEAWAY_MSG + String.format(" -%,d", ((GiveawayEvent) event).calculateGiveawayAmount(order)) + "원");
         }
     }
+
+    // 총혜택 금액을 출력하는 메서드
+    public void printTotalBenefits(Order order) {
+        System.out.println(Message.TOTAL_BENEFITS_AMOUNT_MSG);
+        System.out.println(String.format("-%,d", CALCULATOR.getTotalBenefits(order)) + "원");
+    }
+
 }
