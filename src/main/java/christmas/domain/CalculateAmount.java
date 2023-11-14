@@ -19,11 +19,23 @@ public class CalculateAmount {
         return resultAmount;
     }
 
-    // 총혜택 금액을 계산하는 메서드
+    // 총할인 금액을 계산하는 메서드(증정품 가격 포함X)
     public int getTotalDiscountAmount(Order order) {
         int resultAmount = 0;
         for (Event event : order.getValidEvents()) {
             resultAmount += event.calculateDiscountAmount(order);
+        }
+        return resultAmount;
+    }
+
+    // 총혜택 금액을 계산하는 메서드(증정품 가격 포함O)
+    public int getTotalBenefits(Order order) {
+        int resultAmount = 0;
+        for (Event event : order.getValidEvents()) {
+            resultAmount += event.calculateDiscountAmount(order);
+            // 증정 이벤트가 포함된 경우 증정품의 가격도 포함
+            if(event instanceof GiveawayEvent)
+                resultAmount += ((GiveawayEvent) event).calculateGiveawayAmount(order);
         }
         return resultAmount;
     }
@@ -40,11 +52,6 @@ public class CalculateAmount {
 
     // 할인 후 예상 결제 금액을 계산하는 메서드
     public int getExpectedTotalPaymentAmount(Order order) {
-        int resultAmount = 0;
-        resultAmount = getTotalAmountBeforeDiscount(order) - getTotalDiscountAmount(order);
-        // 증정 이벤트가 적용 이벤트들에 포함된 경우
-        if (hasGiveawayEvent(order.getValidEvents()))
-            resultAmount -= giveawayEvent.calculateDiscountAmount(order);   // 증정 이벤트 혜택은 실제 할인 금액이 아니므로 할인 금액에서 제외함
-        return resultAmount;
+        return getTotalAmountBeforeDiscount(order) - getTotalDiscountAmount(order);
     }
 }
