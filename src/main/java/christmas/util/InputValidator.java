@@ -75,4 +75,9 @@ public class InputValidator {
         }
         return false;
     }
+
+    // 메뉴를 한번에 20개를 초과해서 주문했는지 확인: 초과 시 false 반환
+    public boolean checkExceededMaxOrderQuantity(Map<String, Integer> menus) {
+        return menus.values().stream().mapToInt(Integer::intValue).sum() <= 20;
+    }
 }
