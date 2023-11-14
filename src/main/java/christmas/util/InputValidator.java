@@ -33,6 +33,7 @@ public class InputValidator {
 
     // 입력된 메뉴의 유효성을 판단하는 메서드
     public boolean checkMenuValidity(String input) {
+        input = input.trim();
         // 1. 메뉴 형식이 올바른지 확인
         if (!checkValidFormat(input))
             return false;
