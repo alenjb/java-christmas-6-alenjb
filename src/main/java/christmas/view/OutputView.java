@@ -19,4 +19,10 @@ public class OutputView {
             System.out.println(menu.getName() + " " + order.getOrderedMenus().get(menu) + "개");
         }
     }
+
+    // 할인 전 총주문 금액을 출력한다.
+    public void printTotalAmountBeforeDiscount(Order order) {
+        System.out.println(Message.TOTAL_AMOUNT_BEFORE_DISCOUNT_MSG);
+        System.out.println(String.format("%,d", CALCULATOR.getTotalAmountBeforeDiscount(order)) + "원");
+    }
 }
