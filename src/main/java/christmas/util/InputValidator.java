@@ -81,7 +81,7 @@ public class InputValidator {
     // 메뉴판에 있는 메뉴인지 확인하는 메서드: 메뉴판에 없을 시 false 반환
     public boolean checkValidMenu(String name) {
         for (Menu menu : Menu.values()) {
-            if (menu.name().equals(name))
+            if (menu.getName().equals(name))
                 return true;
         }
         return false;
