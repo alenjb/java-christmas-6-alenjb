@@ -1,9 +1,12 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.constants.Menu;
 import christmas.constants.Message;
 import christmas.util.InputValidator;
 import christmas.util.Parser;
+
+import java.util.Map;
 
 public class InputView {
     final InputValidator VALIDATOR = new InputValidator();
@@ -16,5 +19,15 @@ public class InputView {
         if (VALIDATOR.checkDateValidity(input))
             return Integer.parseInt(input);
         return INVALID;
+    }
+
+    public Map<Menu, Integer> readMenus() {
+        System.out.println(Message.GET_MENU_MSG);
+        String input = Console.readLine();
+        // 입력값이 유효하면
+        if (VALIDATOR.checkMenuValidity(input))
+            // 메뉴를 파싱해서 반환
+            return PARSER.convertToMenuFormat(PARSER.splitInput(input));
+        return null;
     }
 }
