@@ -1,5 +1,7 @@
 package christmas.util;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class InputValidator {
@@ -32,5 +34,17 @@ public class InputValidator {
         Pattern pattern = Pattern.compile("^(([가-힣]+-(?:[1-9]|1[0-9]|20)),)*[가-힣]+-(?:[1-9]|1[0-9]|20)$");
         return pattern.matcher(input).matches();
     }
+
+    // 중복 메뉴를 입력했는지 확인: 중복 시 false 반환
+    public boolean checkDuplicateMenu(String inputs) {
+        Set<String> menus = new HashSet<>();
+        for (String menu : parser.splitByComma(inputs)) {
+            String menuName = menu.split("-")[0];
+            if (!menus.add(menuName))
+                return false;
+        }
+        return true;
+    }
+
 
 }
