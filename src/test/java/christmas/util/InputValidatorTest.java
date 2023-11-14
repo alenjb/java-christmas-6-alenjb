@@ -1,56 +1,22 @@
 package christmas.util;
 
-import christmas.constants.Menu;
+import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InputValidatorTest {
     final InputValidator inputValidator = new InputValidator();
 
     @Test
+    @DisplayName("날짜 입력값의 유효성을 테스트")
     void checkDateValidity() {
-    }
-
-    @Test
-    void checkMenuValidity() {
-    }
-
-    @Test
-    void checkValidFormat() {
-        assertTrue(inputValidator.checkValidFormat("해산물파스타-2,레드와인-1,초코케이크-1"));
-        assertTrue(inputValidator.checkValidFormat("해산물파스타-5"));
-        assertFalse(inputValidator.checkValidFormat("해산물파스타-2,레드와인-1,초코케이크-1,"));
-        assertFalse(inputValidator.checkValidFormat("해산물파스타-2,레드와인-1,초코케이크-1,레드-"));
-        assertFalse(inputValidator.checkValidFormat("해산물파스타-2,레드와인-1,초코케이크-1,레드"));
-        assertFalse(inputValidator.checkValidFormat("해산물파스타-2,레드와인-1,초코케이크-1 레드-"));
-        assertFalse(inputValidator.checkValidFormat("해산물파스타-2,레드와인-1,초코케이크-1레드-"));
-        assertFalse(inputValidator.checkValidFormat("해산물파스타-2,"));
-        assertFalse(inputValidator.checkValidFormat("해산물파스타2"));
-
-    }
-
-    @Test
-    void checkDuplicateMenu() {
-    }
-
-    @Test
-    void checkValidMenus() {
-    }
-
-    @Test
-    void checkValidMenu() {
-        assertTrue(inputValidator.checkValidMenu(Menu.RED_WINE.getName()));
-        assertFalse(inputValidator.checkValidMenu("해산물 파스타"));
-    }
-
-    @Test
-    void hasFoodOtherThanBeverage() {
-    }
-
-    @Test
-    void checkExceededMaxOrderQuantity() {
+        assertTrue(inputValidator.checkDateValidity(Randoms.pickNumberInRange(1, 31) + ""));
+        assertFalse(inputValidator.checkDateValidity("aaaa"));
+        assertFalse(inputValidator.checkDateValidity("12aaa"));
+        assertFalse(inputValidator.checkDateValidity("2.1"));
+        assertFalse(inputValidator.checkDateValidity("35"));
     }
 }
