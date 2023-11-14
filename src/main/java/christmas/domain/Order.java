@@ -4,10 +4,7 @@ import christmas.constants.Badge;
 import christmas.constants.Giveaway;
 import christmas.constants.Menu;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Order {
     final int NONE = 0;
@@ -46,6 +43,30 @@ public class Order {
                 )
         );
     }
+    public Order(int date, Map<Menu, Integer> orderedMenus) {
+        setOrderedMenus(
+                Map.ofEntries(
+                        // 애피타이저
+                        Map.entry(Menu.MUSHROOM_SOUP, NONE),
+                        Map.entry(Menu.TAPAS, NONE),
+                        Map.entry(Menu.CAESAR_SALAD, NONE),
+                        // 메인
+                        Map.entry(Menu.T_BONE_STEAK, NONE),
+                        Map.entry(Menu.BBQ_RIBS, NONE),
+                        Map.entry(Menu.SEAFOOD_PASTA, NONE),
+                        Map.entry(Menu.CHRISTMAS_PASTA, NONE),
+                        // 디저트
+                        Map.entry(Menu.CHOCOLATE_CAKE, NONE),
+                        Map.entry(Menu.ICE_CREAM, NONE),
+                        // 음료
+                        Map.entry(Menu.ZERO_COLA, NONE),
+                        Map.entry(Menu.RED_WINE, NONE),
+                        Map.entry(Menu.CHAMPAGNE, NONE)
+                )
+        );
+        this.reservationDate = date;
+        this.addOrderedMenus(orderedMenus);
+    }
 
     public int getReservationDate() {
         return reservationDate;
@@ -67,7 +88,7 @@ public class Order {
     }
 
     public Map<Menu, Integer> getOrderedMenus() {
-        return orderedMenus;
+        return orderedMenus != null ? orderedMenus : Collections.emptyMap();
     }
 
     public void setOrderedMenus(Map<Menu, Integer> orderedMenus) {
