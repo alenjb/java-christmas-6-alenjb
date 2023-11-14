@@ -36,6 +36,11 @@ public class GiveawayEvent implements Event {
         return 0;   // 할인 이벤트가 아니므로 0을 반환
     }
 
+    // 증정 혜택 금액 계산 메서드
+    public int calculateGiveawayAmount(Order order) {
+        return Amount.GIVEAWAY_AMOUNT.amount;   // 증정 이벤트 혜택 금액을 반환
+    }
+
     public void giveaway(Order order) {
         order.setGiveaway(Giveaway.CHAMPAGNE);
     }
