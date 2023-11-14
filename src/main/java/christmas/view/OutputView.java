@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.constants.Giveaway;
 import christmas.constants.Menu;
 import christmas.constants.Message;
 import christmas.domain.CalculateAmount;
@@ -24,5 +25,15 @@ public class OutputView {
     public void printTotalAmountBeforeDiscount(Order order) {
         System.out.println(Message.TOTAL_AMOUNT_BEFORE_DISCOUNT_MSG);
         System.out.println(String.format("%,d", CALCULATOR.getTotalAmountBeforeDiscount(order)) + "원");
+    }
+
+    // 증정 메뉴를 출력한다.
+    public void printGiveaway(Order order) {
+        System.out.println(Message.GIVEAWAY_MSG);
+        if (order.getGiveaway().equals(Giveaway.CHAMPAGNE)) {
+            System.out.println(Giveaway.CHAMPAGNE.name() + " 1개");
+            return;
+        }
+        System.out.println(Giveaway.NONE.name());
     }
 }
