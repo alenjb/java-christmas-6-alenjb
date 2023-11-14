@@ -1,6 +1,9 @@
 package christmas.util;
 
+import christmas.constants.Menu;
+
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -46,5 +49,21 @@ public class InputValidator {
         return true;
     }
 
+    // 메뉴판에 있는 메뉴들인지 확인하는 메서드: 메뉴판에 없을 시 false 반환
+    public boolean checkValidMenus(Map<String, Integer> menus) {
+        for (String menuName : menus.keySet()) {
+            if (!checkValidMenu(menuName))
+                return false;
+        }
+        return true;
+    }
 
+    // 메뉴판에 있는 메뉴인지 확인하는 메서드: 메뉴판에 없을 시 false 반환
+    public boolean checkValidMenu(String name) {
+        for (Menu menu : Menu.values()) {
+            if (menu.name().equals(name))
+                return true;
+        }
+        return false;
+    }
 }
