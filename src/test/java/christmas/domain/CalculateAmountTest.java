@@ -1,8 +1,6 @@
 package christmas.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import christmas.constant.AmountForTest;
-import christmas.constant.DayForTest;
 import christmas.constants.Day;
 import christmas.constants.Menu;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculateAmountTest {
     static final int NONE = 0;
