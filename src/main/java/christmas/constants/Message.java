@@ -11,6 +11,11 @@ public enum Message {
     TOTAL_BENEFITS_AMOUNT_MSG("<총혜택 금액>"),
     EXPECTED_TOTAL_PAYMENT_AMOUNT_MSG("<할인 후 예상 결제 금액>"),
     BADGE_MSG("<12월 이벤트 배지>"),
+    CHRISTMAS_DDAY_EVENT_MSG("크리스마스 디데이 할인:"),
+    WEEKDAYS_EVENT_MSG("평일 할인"),
+    WEEKEND_EVENT_MSG("주말 할인"),
+    SPECIAL_EVENT_MSG("특별 할인"),
+    GIVEAWAY_EVENT_MSG("증정 이벤트"),
     NONE("없음");
 
     final String message;
