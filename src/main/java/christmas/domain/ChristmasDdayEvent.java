@@ -17,7 +17,8 @@ public class ChristmasDdayEvent extends Discount implements Event {
 
     @Override
     public int calculateDiscountAmount(Order order) {
-        return Amount.INITIAL_CHRISTMAS_DDAY_DISCOUNT_AMOUNT.amount + Amount.CHRISTMAS_DDAY_DISCOUNT_INCREMENT_AMOUNT_BY_DAY.amount * (order.getReservationDate() - Day.CHRISTMAS_D_DAY_EVENT_START_DAY.getDay());
+        discountAmount = Amount.INITIAL_CHRISTMAS_DDAY_DISCOUNT_AMOUNT.amount + Amount.CHRISTMAS_DDAY_DISCOUNT_INCREMENT_AMOUNT_BY_DAY.amount * (order.getReservationDate() - Day.CHRISTMAS_D_DAY_EVENT_START_DAY.getDay());
+        return discountAmount;
     }
 
     // 주문 금액에서 할인 금액만큼 할인하는 메서드
