@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.constants.Menu;
+
 import java.util.List;
 
 public class CalculateAmount {
@@ -12,9 +14,8 @@ public class CalculateAmount {
     // 할인 전 총주문 금액을 계산하는 메서드
     public int getTotalAmountBeforeDiscount(Order order) {
         int resultAmount = 0;
-        for (int amount : order.getOrderedMenus().values()) {
-            resultAmount += amount;
-        }
+        for(Menu menu: order.getOrderedMenus().keySet())
+            resultAmount += menu.getPrice() * order.getOrderedMenus().get(menu);
         return resultAmount;
     }
 
