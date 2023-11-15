@@ -16,6 +16,8 @@ public enum Message {
     WEEKEND_EVENT_MSG("주말 할인"),
     SPECIAL_EVENT_MSG("특별 할인"),
     GIVEAWAY_EVENT_MSG("증정 이벤트"),
+    INVALID_DATE_ERROR_MSG("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요."),
+    INVALID_MENU_ERROR_MSG("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."),
     NONE("없음");
 
     final String message;
