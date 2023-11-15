@@ -23,7 +23,9 @@ public abstract class Discount implements Event {
         if (!isValidEvent(order.getReservationDate(), order.getExpectedPaymentAmount())) {
             return;
         }
-        addToValidEvents(order);
-        discount(order);
+        if (this.calculateDiscountAmount(order) > 0) {
+            addToValidEvents(order);
+            discount(order);
+        }
     }
 }
