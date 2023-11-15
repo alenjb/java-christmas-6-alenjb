@@ -34,6 +34,7 @@ public class OutputView {
         System.out.println(Message.GIVEAWAY_MSG.getMessage());
         if (order.getGiveaway().equals(Giveaway.CHAMPAGNE)) {
             System.out.println(Giveaway.CHAMPAGNE.getName() + " 1개");
+            System.out.println();
             return;
         }
         System.out.println(Giveaway.NONE.getName());
