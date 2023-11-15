@@ -16,14 +16,20 @@ public class InputView {
         System.out.println(Message.GET_DATE_MSG.getMessage());
         while (true) {
             try {
-                String input = Console.readLine();
-                if (VALIDATOR.checkDateValidity(input))
-                    return Integer.parseInt(input);
-                // 에러 메시지를 출력
-                System.out.println(Message.INVALID_DATE_ERROR_MSG.getMessage());
+                Integer input = getIntegerFromInput();
+                if (input != null) return input;
             } catch (IllegalArgumentException ignored) {
             }
         }
+    }
+
+    private Integer getIntegerFromInput() {
+        String input = Console.readLine();
+        if (VALIDATOR.checkDateValidity(input))
+            return Integer.parseInt(input);
+        // 에러 메시지를 출력
+        System.out.println(Message.INVALID_DATE_ERROR_MSG.getMessage());
+        return null;
     }
 
     public Map<Menu, Integer> readMenus() {
@@ -31,13 +37,12 @@ public class InputView {
         while (true) {
             try {
                 String input = Console.readLine();
-                // 입력값이 유효하면
-                if (VALIDATOR.checkMenuValidity(input))
-                    // 메뉴를 파싱해서 반환
-                    return PARSER.convertToMenuFormat(PARSER.splitInput(input));
+                // 입력값이 유효하면 메뉴를 파싱해서 반환
+                if (VALIDATOR.checkMenuValidity(input)) return PARSER.convertToMenuFormat(PARSER.splitInput(input));
                 // 에러 메시지를 출력
                 System.out.println(Message.INVALID_MENU_ERROR_MSG.getMessage());
-            }catch (IllegalArgumentException ignored){}
+            } catch (IllegalArgumentException ignored) {
+            }
         }
     }
 }
