@@ -17,7 +17,7 @@ class SpecialEventTest {
     @Test
     @DisplayName("예약 날짜가 이벤트 기간인 경우 테스트")
     void isValidEventPeriod() {
-        assertTrue(SPECIAL_EVENT.isValidEventPeriod(Day.EVENT_START_DAY.getDay()));
+        assertTrue(SPECIAL_EVENT.isValidEventPeriod(Day.STAR_DAYS.getDay()));
     }
 
     @Test
